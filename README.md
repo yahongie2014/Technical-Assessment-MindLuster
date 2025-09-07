@@ -85,14 +85,14 @@ npx create-react-app frontend
 
 # Create Vite Config
 
-`````cmd
+```cmd
 cp .env.example .enn
-````
+```
 
-````Change ENV > parmmaters
+```Change ENV > Parameters
 VITE_API_URL=https://localhost:8000
 VITE_API_PREFIX=/api
-`````
+```
 
 # Deploy By Vercel Git Hook
 
