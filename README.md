@@ -75,12 +75,12 @@ npx create-react-app frontend
 ## list of packages
 
 ```
-    "@hello-pangea/dnd": "^18.0.1"
-    "@mui/icons-material": "^6.1.3"
-    "@mui/material": "^6.1.3"
-    "@tanstack/react-query": "^5.51.15"
-    "axios": "^1.7.4"
-    "vitejs/plugin-react"
+"@hello-pangea/dnd": "^18.0.1"
+"@mui/icons-material": "^6.1.3"
+"@mui/material": "^6.1.3"
+"@tanstack/react-query": "^5.51.15"
+"axios": "^1.7.4"
+"vitejs/plugin-react"
 ```
 
 # create Vite Config
