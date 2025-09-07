@@ -72,7 +72,7 @@ Will Debloy on ([Offline](http://localhost:8000)) or ([online](https://task.fada
 npx create-react-app frontend
 ```
 
-## list of packages
+## List of packages
 
 ```
 "@hello-pangea/dnd": "^18.0.1"
@@ -83,7 +83,7 @@ npx create-react-app frontend
 "vitejs/plugin-react"
 ```
 
-# create Vite Config
+# Create Vite Config
 
 `````cmd
 cp .env.example .env
