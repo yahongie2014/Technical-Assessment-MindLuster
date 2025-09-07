@@ -64,7 +64,7 @@ Will Debloy on ([Offline](http://localhost:8000)) or ([online](https://task.fada
 
 ## ERD Design
 
-![alt text](https://raw.githubusercontent.com/yahongie2014/Technical-Assessment-MindLuster/refs/heads/main/kanban.png)
+![alt text](https://raw.githubusercontent.com/yahongie2014/Technical-Assessment-MindLuster/refs/heads/main/TASK%20DIAGRAM.png)
 
 ## 2.FrontEnd
 
@@ -97,7 +97,7 @@ VITE_API_PREFIX=/api
 # Deploy By Vercel Git Hook
 
 [VERCEL Online !](https://technical-assessment-mind-luster.vercel.app/)
-![alt text](https://raw.githubusercontent.com/yahongie2014/Technical-Assessment-MindLuster/refs/heads/main/TASK%20DIAGRAM.png)
+![alt text](https://raw.githubusercontent.com/yahongie2014/Technical-Assessment-MindLuster/refs/heads/main/kanban.png)
 
 ## 3.SQL Queries
 
