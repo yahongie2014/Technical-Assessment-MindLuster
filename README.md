@@ -7,7 +7,7 @@ composer create-project laravel/laravel MindLuster
 ```
 
 ```cmd
-php artisan make:model -m Task
+php artisan make:model -m Task && php artisan make:controller TaskController --model=Task
 ```
 
 ```cmd
@@ -29,16 +29,12 @@ php artisan vendor:publish && php artisan breeze:install
 ```cmd
   php artisan route:list
 
-  GET|HEAD        / .............................. generated::zIKde3qMuMYJtul8
   POST            api/auth/login ................. generated::jN2jPrHfY0Hk0GsR
   POST            api/auth/logout ................ generated::DBVILOPutwY82zBh
   GET|HEAD        api/tasks ............... tasks.index › TaskController@index
   POST            api/tasks ............... tasks.store › TaskController@store
-  GET|HEAD        api/tasks/create ...... tasks.create › TaskController@create
-  GET|HEAD        api/tasks/{task} .......... tasks.show › TaskController@show
   PUT|PATCH       api/tasks/{task} ...... tasks.update › TaskController@update
   DELETE          api/tasks/{task} .... tasks.destroy › TaskController@destroy
-  GET|HEAD        api/tasks/{task}/edit ..... tasks.edit › TaskController@edit
 ```
 
 ```cmd
