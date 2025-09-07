@@ -72,7 +72,9 @@ Will Debloy on ([Offline](http://localhost:8000)) or ([online](https://task.fada
 npx create-react-app frontend
 ```
 
-```list of packages
+## list of packages
+
+```
     "@hello-pangea/dnd": "^18.0.1"
     "@mui/icons-material": "^6.1.3"
     "@mui/material": "^6.1.3"
