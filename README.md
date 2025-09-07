@@ -86,10 +86,10 @@ npx create-react-app frontend
 # Create Vite Config
 
 `````cmd
-cp .env.example .env
+cp .env.example .enn
 ````
 
-````change ENV > parmmaters
+````Change ENV > parmmaters
 VITE_API_URL=https://localhost:8000
 VITE_API_PREFIX=/api
 `````
