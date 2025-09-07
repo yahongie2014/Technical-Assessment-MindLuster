@@ -82,7 +82,7 @@ npx create-react-app frontend
 # Create Vite Config
 
 ```cmd
-cp .env.example .enn
+cp .env.example .env
 ```
 
 ```Change ENV > Parameters
