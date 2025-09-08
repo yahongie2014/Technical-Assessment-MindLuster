@@ -18,6 +18,7 @@ import { api } from "../features/api";
 import { logout } from "../features/auth";
 import Column from "../components/Column";
 import TaskDialog from "../components/TaskDialog";
+import Footer from "../components/Footer";
 
 const STATUSES = ["backlog", "inprogress", "review", "done"];
 const isStatus = (s) => STATUSES.includes(s);
@@ -100,103 +101,106 @@ export default function Board() {
   const handleDelete = (id) => delMut.mutate(id);
 
   return (
-    <Container maxWidth="xl" sx={{ py: 2 }}>
-      <AppBar position="static" color="default" elevation={0} sx={{ mb: 2 }}>
-        <Toolbar sx={{ gap: 2, flexWrap: "wrap" }}>
-          <Typography variant="h6">Kanban Dashboard</Typography>
-          <TextField
-            size="small"
-            placeholder="Search tasks..."
-            sx={{ minWidth: 420, flexGrow: 1, maxWidth: 560 }}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Button
-            startIcon={<AddIcon />}
-            variant="contained"
-            onClick={() => {
-              setEditing(null);
-              setDialogOpen(true);
-            }}
-          >
-            Add Task
-          </Button>
-          <Button
-            onClick={() => {
-              logout();
-              window.location.reload();
-            }}
-          >
-            Logout
-          </Button>
-        </Toolbar>
-      </AppBar>
+    <>
+      <Container maxWidth="xl" sx={{ py: 2 }}>
+        <AppBar position="static" color="default" elevation={0} sx={{ mb: 2 }}>
+          <Toolbar sx={{ gap: 2, flexWrap: "wrap" }}>
+            <Typography variant="h6">Kanban Dashboard</Typography>
+            <TextField
+              size="small"
+              placeholder="Search tasks..."
+              sx={{ minWidth: 420, flexGrow: 1, maxWidth: 560 }}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button
+              startIcon={<AddIcon />}
+              variant="contained"
+              onClick={() => {
+                setEditing(null);
+                setDialogOpen(true);
+              }}
+            >
+              Add Task
+            </Button>
+            <Button
+              onClick={() => {
+                logout();
+                window.location.reload();
+              }}
+            >
+              Logout
+            </Button>
+          </Toolbar>
+        </AppBar>
 
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={3}>
-            <Column
-              title="Backlog"
-              status="backlog"
-              tasks={grouped.backlog}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              pageState={[pBacklog, setPBacklog]}
-            />
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={3}>
+              <Column
+                title="Backlog"
+                status="backlog"
+                tasks={grouped.backlog}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                pageState={[pBacklog, setPBacklog]}
+              />
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Column
+                title="In Progress"
+                status="inprogress"
+                tasks={grouped.inprogress}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                pageState={[pInprog, setPInprog]}
+              />
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Column
+                title="Review"
+                status="review"
+                tasks={grouped.review}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                pageState={[pReview, setPReview]}
+              />
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Column
+                title="Done"
+                status="done"
+                tasks={grouped.done}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                pageState={[pDone, setPDone]}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={3}>
-            <Column
-              title="In Progress"
-              status="inprogress"
-              tasks={grouped.inprogress}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              pageState={[pInprog, setPInprog]}
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Column
-              title="Review"
-              status="review"
-              tasks={grouped.review}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              pageState={[pReview, setPReview]}
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Column
-              title="Done"
-              status="done"
-              tasks={grouped.done}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              pageState={[pDone, setPDone]}
-            />
-          </Grid>
-        </Grid>
-      </DragDropContext>
+        </DragDropContext>
 
-      <TaskDialog
-        open={dialogOpen}
-        onClose={() => setDialogOpen(false)}
-        initial={editing}
-      />
+        <TaskDialog
+          open={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+          initial={editing}
+        />
 
-      {isFetching && (
-        <Box sx={{ mt: 1 }}>
-          <Typography variant="caption" color="text.secondary">
-            Updating…
-          </Typography>
-        </Box>
-      )}
-    </Container>
+        {isFetching && (
+          <Box sx={{ mt: 1 }}>
+            <Typography variant="caption" color="text.secondary">
+              Updating…
+            </Typography>
+          </Box>
+        )}
+      </Container>
+      <Footer />
+    </>
   );
 }
