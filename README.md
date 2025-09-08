@@ -65,7 +65,8 @@ Will Debloy on ([Offline](http://localhost:8000)) or ([online](https://task.fada
 ## 2.FrontEnd
 
 ```cmd
-npx create-react-app frontend
+npm create vite@latest frontend && cd frontend && npm i
+
 ```
 
 ## List of packages
