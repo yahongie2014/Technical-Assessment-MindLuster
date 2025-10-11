@@ -1,0 +1,83 @@
+version: "3.9"
+
+services:
+  # ===== Laravel (PHP-FPM) =====
+  api:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    container_name: kanban_api
+    env_file:
+      - .env
+    volumes:
+      - ./:/var/www/html
+      - vendor:/var/www/html/vendor
+      - storage:/var/www/html/storage
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  # ===== Web server for Laravel =====
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: kanban_nginx
+    ports:
+      - "8080:80"     # API available at http://localhost:8080
+    volumes:
+      - ./:/var/www/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      api:
+        condition: service_started
+
+  # ===== MySQL (or switch to SQLite if you prefer) =====
+  db:
+    image: mysql:8.0
+    container_name: kanban_db
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-kanban}
+      MYSQL_USER: ${DB_USERNAME:-kanban}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-kanban}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  # ===== Redis (queues/cache) =====
+  redis:
+    image: redis:7-alpine
+    container_name: kanban_redis
+    ports:
+      - "6379:6379"
+
+  # ===== Frontend (Vite dev) =====
+  web:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    container_name: kanban_web
+    env_file:
+      - frontend.env.example
+    ports:
+      - "5173:5173"   # Vite dev server
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      nginx:
+        condition: service_started
+    # For Vite 6 hot reload on Docker:
+    command: sh -c "cd frontend && npm run dev -- --host --port 5173"
+
+volumes:
+  vendor:
+  storage:
+  dbdata:

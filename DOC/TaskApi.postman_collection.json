@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "cd9b4620-8601-40e6-913c-67a6cffa1aac",
+		"name": "TaskApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "2836787",
+		"_collection_link": "https://back-bone.postman.co/workspace/BackBone's-Public-Workspace~db05af3a-489f-4f2f-bf90-cb519b0e4641/collection/2836787-cd9b4620-8601-40e6-913c-67a6cffa1aac?action=share&source=collection_link&creator=2836787"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"demo@example.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Localhost}}api/auth/login"
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"demo@example.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Localhost}}api/auth/login"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Sep 2025 17:57:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"6|cOxKBfvjRNQRDeV7Zh8J5xuhf4HPs9QwuyyUutxD8fcc6148\",\n    \"user\": {\n        \"id\": 4,\n        \"name\": \"Demo User\",\n        \"email\": \"demo@example.com\",\n        \"email_verified_at\": \"2025-09-06T17:50:12.000000Z\",\n        \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n        \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "List all tasks by column",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{BearerToken}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{Localhost}}api/tasks?column=done",
+					"host": [
+						"{{Localhost}}api"
+					],
+					"path": [
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "column",
+							"value": "done"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List tasks in TODO",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Localhost}}api/tasks"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Sep 2025 17:59:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 46,\n            \"title\": \"Et labore eius enim.\",\n            \"description\": null,\n            \"column\": \"in_progress\",\n            \"due_date\": null,\n            \"priority\": 1,\n            \"meta\": {\n                \"labels\": []\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 47,\n            \"title\": \"Culpa ut exercitationem doloremque omnis omnis.\",\n            \"description\": \"Explicabo temporibus accusamus aspernatur nesciunt aut architecto illum. Totam cumque cum et voluptatum nostrum consequatur.\",\n            \"column\": \"done\",\n            \"due_date\": \"2025-09-14\",\n            \"priority\": 3,\n            \"meta\": {\n                \"labels\": [\n                    \"feature\",\n                    \"bug\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 48,\n            \"title\": \"Ea eius consectetur consequatur.\",\n            \"description\": null,\n            \"column\": \"in_progress\",\n            \"due_date\": \"2025-09-09\",\n            \"priority\": 1,\n            \"meta\": {\n                \"labels\": [\n                    \"bug\",\n                    \"feature\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 49,\n            \"title\": \"Aliquid mollitia sit architecto.\",\n            \"description\": \"Quidem mollitia esse dolor ullam aspernatur veritatis. Rerum quis impedit doloribus magni. Aperiam omnis aut debitis modi maxime.\",\n            \"column\": \"todo\",\n            \"due_date\": null,\n            \"priority\": 3,\n            \"meta\": {\n                \"labels\": []\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 50,\n            \"title\": \"Sint dolor nisi et minus omnis.\",\n            \"description\": null,\n            \"column\": \"done\",\n            \"due_date\": \"2025-09-15\",\n            \"priority\": 4,\n            \"meta\": {\n                \"labels\": [\n                    \"feature\",\n                    \"bug\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 51,\n            \"title\": \"In molestiae necessitatibus ex.\",\n            \"description\": \"Velit expedita officiis et provident eos ab. Provident nam esse soluta exercitationem voluptatibus. Et nisi aut error voluptas eum iste. Impedit culpa voluptas error.\",\n            \"column\": \"done\",\n            \"due_date\": \"2025-09-17\",\n            \"priority\": 3,\n            \"meta\": {\n                \"labels\": [\n                    \"bug\",\n                    \"urgent\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 52,\n            \"title\": \"Eos esse tempore.\",\n            \"description\": \"Qui veritatis sunt aliquid quidem soluta voluptates porro. Commodi est beatae sit.\",\n            \"column\": \"done\",\n            \"due_date\": \"2025-09-29\",\n            \"priority\": 5,\n            \"meta\": {\n                \"labels\": []\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 53,\n            \"title\": \"Repellat est cumque est.\",\n            \"description\": \"Aut omnis sapiente reiciendis explicabo. Rerum aut et iure. Fugiat adipisci aspernatur quia quaerat esse quo qui. Sit eaque veniam harum amet.\",\n            \"column\": \"todo\",\n            \"due_date\": null,\n            \"priority\": 5,\n            \"meta\": {\n                \"labels\": []\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 54,\n            \"title\": \"Esse amet inventore.\",\n            \"description\": \"Et odit repellat veniam. Soluta molestiae ducimus mollitia natus quia minima. Ea consequatur qui sint doloribus.\",\n            \"column\": \"todo\",\n            \"due_date\": null,\n            \"priority\": 1,\n            \"meta\": {\n                \"labels\": [\n                    \"feature\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 55,\n            \"title\": \"Hic veniam laboriosam rerum et.\",\n            \"description\": \"Numquam sint qui consectetur reprehenderit voluptate error. Sint itaque sint consequatur. A et modi alias enim ut qui corporis. Distinctio voluptate magnam deleniti laboriosam est optio occaecati.\",\n            \"column\": \"done\",\n            \"due_date\": \"2025-09-27\",\n            \"priority\": 5,\n            \"meta\": {\n                \"labels\": [\n                    \"feature\",\n                    \"urgent\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 56,\n            \"title\": \"Voluptas enim deserunt voluptatum omnis.\",\n            \"description\": null,\n            \"column\": \"todo\",\n            \"due_date\": null,\n            \"priority\": 5,\n            \"meta\": {\n                \"labels\": [\n                    \"feature\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 57,\n            \"title\": \"Et perferendis impedit aut.\",\n            \"description\": \"Nobis molestiae quas autem corporis. Autem eveniet sapiente earum sed eum sint inventore possimus. Officia molestiae sit dolorum ipsa hic qui.\",\n            \"column\": \"todo\",\n            \"due_date\": \"2025-09-17\",\n            \"priority\": 3,\n            \"meta\": {\n                \"labels\": [\n                    \"feature\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 58,\n            \"title\": \"Repellendus quam quaerat reprehenderit.\",\n            \"description\": null,\n            \"column\": \"todo\",\n            \"due_date\": \"2025-09-25\",\n            \"priority\": 4,\n            \"meta\": {\n                \"labels\": []\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 59,\n            \"title\": \"Praesentium vel eum.\",\n            \"description\": \"Nulla totam vel illo velit. Itaque amet illo et fuga dolor rerum. Sed incidunt mollitia voluptatem recusandae dolorem et. Nam est sint nostrum repellat.\",\n            \"column\": \"in_progress\",\n            \"due_date\": null,\n            \"priority\": 5,\n            \"meta\": {\n                \"labels\": []\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        },\n        {\n            \"id\": 60,\n            \"title\": \"Perspiciatis non dolorem fugiat dolore.\",\n            \"description\": null,\n            \"column\": \"in_progress\",\n            \"due_date\": \"2025-09-28\",\n            \"priority\": 2,\n            \"meta\": {\n                \"labels\": [\n                    \"bug\",\n                    \"feature\"\n                ]\n            },\n            \"created_at\": \"2025-09-06T17:50:12.000000Z\",\n            \"updated_at\": \"2025-09-06T17:50:12.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/tasks?page=1\",\n        \"last\": \"http://localhost:8000/api/tasks?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/tasks\",\n        \"per_page\": 20,\n        \"to\": 15,\n        \"total\": 15\n    },\n    \"filters\": {\n        \"column\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{BearerToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test task create\",\n    \"column\": \"in_progress\", // 'todo', 'in_progress', 'done'\n    \"priority\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Localhost}}api/tasks"
+			},
+			"response": [
+				{
+					"name": "Create task",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"test task create\",\n    \"column\": \"in_progress\", // 'todo', 'in_progress', 'done'\n    \"priority\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Localhost}}api/tasks"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Sep 2025 18:02:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 61,\n        \"title\": \"test task create\",\n        \"description\": null,\n        \"column\": \"in_progress\",\n        \"due_date\": null,\n        \"priority\": 2,\n        \"meta\": {},\n        \"created_at\": \"2025-09-06T18:02:27.000000Z\",\n        \"updated_at\": \"2025-09-06T18:02:27.000000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Task By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{BearerToken}}"
+					}
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"hello task create\",\n    \"column\": \"todo\", // 'todo', 'in_progress', 'done'\n    \"description\": \"bhbhbhbh\",\n    \"priority\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Localhost}}api/tasks/46"
+			},
+			"response": [
+				{
+					"name": "Update Task By Id",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"hello task create\",\n    \"column\": \"todo\", // 'todo', 'in_progress', 'done'\n    \"description\": \"lolo\",\n    \"priority\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Localhost}}api/tasks/61"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Sep 2025 18:04:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 61,\n        \"title\": \"hello task create\",\n        \"description\": \"lolo\",\n        \"column\": \"todo\",\n        \"due_date\": null,\n        \"priority\": 2,\n        \"meta\": {},\n        \"created_at\": \"2025-09-06T18:02:27.000000Z\",\n        \"updated_at\": \"2025-09-06T18:04:23.000000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Task by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{BearerToken}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{Localhost}}api/tasks/46"
+			},
+			"response": [
+				{
+					"name": "Delete Task by Id",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{Localhost}}api/tasks/61"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Sep 2025 18:05:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Deleted\"\n}"
+				}
+			]
+		}
+	]
+}
